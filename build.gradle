@@ -1,0 +1,32 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id 'java'
+    id 'me.champeau.gradle.jmh' version '0.5.3'
+}
+
+group 'net.meilcli'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.openjdk.jmh:jmh-core:1.21"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+jmh {
+    jmhVersion = "1.21"
+    warmup = "1s"
+    warmupIterations = 1
+    iterations = 5
+    fork = 1
+}
+
+test {
+    useJUnitPlatform()
+}
